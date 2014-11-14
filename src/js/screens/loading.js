@@ -84,7 +84,7 @@
         // draw the progress bar
         context.strokeStyle = "silver";
         context.strokeRect((me.video.getWidth()/2) - 150, ypos, 300, 6);
-        context.fillStyle = "#89b002";
+        context.fillStyle = "#ef7f01";
         context.fillRect((me.video.getWidth() / 2) - 148, ypos + 2, progress - 4, 2);
     }
 

@@ -26,18 +26,20 @@ game.resources = [
     { name: "ts2", type: "image", src: "data/img/ts2.png" },
     { name: "ts3", type: "image", src: "data/img/ts3.png" },
 
+    { name: "tuplogo", type: "image", src: "data/img/tup_logo.png" },
+
     { name: "map1", type: "tmx", src: "data/map/1.xml" },
-    { name: "map2", type: "tmx", src: "data/map/2.xml" },
-    { name: "map3", type: "tmx", src: "data/map/3.xml" },
-    { name: "map4", type: "tmx", src: "data/map/4.xml" },
-    { name: "map5", type: "tmx", src: "data/map/5.xml" },
+//    { name: "map2", type: "tmx", src: "data/map/2.xml" },
+//    { name: "map3", type: "tmx", src: "data/map/3.xml" },
+//    { name: "map4", type: "tmx", src: "data/map/4.xml" },
+//    { name: "map5", type: "tmx", src: "data/map/5.xml" },
 
-    { name: "font", type: "image", src: "data/img/font2.png" },
+    { name: "font", type: "image", src: "data/img/font.png" },
 
-	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
-    { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },
-    { name: "tilly_die", type: "audio", src: "data/sfx/", channel: 2 },
-    { name: "enemy_hit", type: "audio", src: "data/sfx/", channel: 1 }
+//	{ name: "jump", type: "audio", src: "data/sfx/", channel: 2 },
+//    { name: "melee", type: "audio", src: "data/sfx/", channel: 3 },
+//    { name: "tilly_die", type: "audio", src: "data/sfx/", channel: 2 },
+//    { name: "enemy_hit", type: "audio", src: "data/sfx/", channel: 1 }
 
 
 	/* Graphics. 

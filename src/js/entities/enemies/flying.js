@@ -68,7 +68,7 @@ game.FlyingEnemy = me.ObjectEntity.extend({
                 else {
                     this.die();
                 }
-                me.audio.play("enemy_hit", false, null, 0.8);
+//                me.audio.play("enemy_hit", false, null, 0.8);
 
             }
             else if (obj instanceof game.PlayerEntity) {

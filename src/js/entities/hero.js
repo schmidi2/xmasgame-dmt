@@ -32,7 +32,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.setFriction(0.25, 0);
         this.setMaxVelocity(5, 15);
         
-        this.gravity = 0.5;
+        this.gravity = 0.4;
       
         this.updateColRect(80, 60, 90, 52);
 
@@ -74,13 +74,13 @@ game.PlayerEntity = me.ObjectEntity.extend({
                 this.flipX(true);
                 this.facing = -1;
                 // update the entity velocity
-                this.vel.x -= this.accel.x * me.timer.tick;
+                this.vel.x -= 300;
             } else if (me.input.isKeyPressed('right')) {
                 // unflip the sprite
                 this.flipX(false);
                 this.facing = 1;
                 // update the entity velocity
-                this.vel.x += this.accel.x * me.timer.tick;
+                this.vel.x += 300;
             } else {
                 //this.vel.x = 0;
             }
@@ -93,11 +93,11 @@ game.PlayerEntity = me.ObjectEntity.extend({
                     // set the jumping flag
                     this.jumping = true;
 
-                    me.audio.play("jump", false, null, 0.5);
+//                    me.audio.play("jump", false, null, 0.5);
                 }
 
             }
-            if (me.input.isKeyPressed("attack")) {
+/*            if (me.input.isKeyPressed("attack")) {
                 if (!this.attacking) {
                     this.attacking = true;
                     this.renderable.setCurrentAnimation("attack", (function () {
@@ -106,15 +106,15 @@ game.PlayerEntity = me.ObjectEntity.extend({
                     }).bind(this));
                     this.renderable.setAnimationFrame(0);
 
-                    me.audio.play("melee", false, null, 1);
+//                    me.audio.play("melee", false, null, 1);
                 }
-            }
+            }*//*
             if (me.input.isKeyPressed("throw") && game.data.jacks > 0) {
                 var bul = new game.ProjectileEntity((this.pos.x + (this.renderable.hWidth - 15)) + (this.facing * 10), this.pos.y+90, { x: this.facing * 15, y: 0 }, { image: "jack", spritewidth: 30, spriteheight: 32 });
                 me.game.add(bul);
 
                 game.data.jacks--;
-            }
+            }*/
 
 
             if ((this.jumping || this.falling) && !this.attacking) {
@@ -124,10 +124,10 @@ game.PlayerEntity = me.ObjectEntity.extend({
                 if (!this.renderable.isCurrentAnimation("walk") && !this.attacking) this.renderable.setCurrentAnimation("walk");
             }
 
-            if (me.input.isKeyPressed("levelskip")) {
+/*            if (me.input.isKeyPressed("levelskip")) {
                 me.levelDirector.nextLevel();
                 return false;
-            }
+            }*/
         }
         // check & update player movement
         this.updateMovement();
@@ -188,9 +188,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
             this.dying = true;
             this.renderable.setCurrentAnimation("die");
             this.renderable.setAnimationFrame(0);
-            me.audio.play("tilly_die", false, null, 0.6);
+//            me.audio.play("tilly_die", false, null, 0.6);
 
-            game.data.lives--;
+//            game.data.lives--;
 
             this.deathTimer = 100;
 

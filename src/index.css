@@ -1,5 +1,5 @@
 body {
-    background-color: #000;
+    background-color: #0F243E;
     color: #fff;
 
     /* Allow mouse dragging. */
@@ -22,6 +22,7 @@ body {
 #screen canvas {
     margin: auto;
 
+
     /* Hide the gap for font descenders. */
     display: table-cell;
 	
@@ -32,4 +33,5 @@ body {
 	image-rendering: -webkit-optimize-contrast;
 	image-rendering: optimize-contrast;
 	-ms-interpolation-mode: nearest-neighbor;
+	
 }

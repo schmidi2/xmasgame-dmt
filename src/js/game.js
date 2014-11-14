@@ -4,9 +4,17 @@
 var game = {
 
     data: {
+		UGID: undefined,
         score: 0,
+		bestscore: 0,
+		globalbestscore: 0,
         jacks: 0,
-        lives: 3
+        lives: 3,
+        seconds: 60,
+		rank: 0,
+		ranking: "",
+		player: "PLAYER1",
+		iid: 0
     },
 
     // Run on page load.
@@ -25,7 +33,7 @@ var game = {
 		}
 
         // Initialize the audio.
-        me.audio.init("mp3,oga");
+//        me.audio.init("mp3,oga");
 
         // Set a callback to run when loading is complete.
         me.loader.onload = this.loaded.bind(this);
@@ -46,6 +54,8 @@ var game = {
     "loaded" : function () {
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
+        me.state.set(me.state.SCORE, new game.ScoreScreen());
+        me.state.set(me.state.GAMEOVER, new game.GameoverScreen());
 
         me.state.transition("fade", "#000000", 250);
 
@@ -54,14 +64,14 @@ var game = {
 
         // Collectibles
         me.entityPool.add("SweetEntity", game.SweetEntity);
-        me.entityPool.add("JackEntity", game.JackEntity);
-        me.entityPool.add("BlockEntity", game.BlockEntity);
-        me.entityPool.add("ProjectileEntity", game.ProjectileEntity);
+//        me.entityPool.add("JackEntity", game.JackEntity);
+//        me.entityPool.add("BlockEntity", game.BlockEntity);
+//        me.entityPool.add("ProjectileEntity", game.ProjectileEntity);
 
 
         // Enemies
         me.entityPool.add("WalkingEnemy", game.WalkingEnemy);
-        me.entityPool.add("FlyingEnemy", game.FlyingEnemy);
+//        me.entityPool.add("FlyingEnemy", game.FlyingEnemy);
 
 
         // enable the keyboard
@@ -69,18 +79,78 @@ var game = {
         me.input.bindKey(me.input.KEY.RIGHT, "right");
         me.input.bindKey(me.input.KEY.UP, "jump", true);
         me.input.bindKey(me.input.KEY.SPACE, "jump", true);
-        me.input.bindKey(me.input.KEY.X, "attack", true);
-        me.input.bindKey(me.input.KEY.Z, "throw", true);
+		me.input.bindTouch(me.input.KEY.SPACE, true); // Touch
+//        me.input.bindKey(me.input.KEY.X, "attack", true);
+//        me.input.bindKey(me.input.KEY.Z, "throw", true);
 
-        me.input.bindKey(me.input.KEY.L, "levelskip", true); //function () { me.levelDirector.loadLevel("map2"); }.bind(this), true);
+//        me.input.bindKey(me.input.KEY.L, "levelskip", true); //function () { me.levelDirector.loadLevel("map2"); }.bind(this), true);
 
         me.debug.renderHitBox = true;
 
         // Start the game.
-        me.state.change(me.state.MENU);
-    }
+        me.state.change(me.state.MENU);   ///////////////////////////////////////////////
+    },
 
-   
+	"timer" : function () {
+		if(0==game.data.seconds) {
+			// GAME OVER
+			clearInterval(game.data.iid);
+
+			$.ajax({
+			  type: "GET",
+			  url: "scores.php",
+			  data: {
+				id: game.data.UGID,
+				score: game.score2(game.data.score),
+				end: "X"
+			  }
+			});
+			
+			game.data.UGID = undefined;
+			me.state.change(me.state.GAMEOVER);
+			return;
+		}
+		
+		if(0<game.data.seconds) {
+			game.data.seconds--;
+		}
+	},
+	"score" : function (score) {
+		q = jQuery.ajaxSettings.flatOptions.t;
+		if(q < 10) q = "000"+q; else
+		if(q < 100) q = "00"+q; else
+		if(q < 1000) q = "0"+q;
+
+		q +="";
+		var s="";
+
+		for(var i=0; i<q.length; i++ )
+		{
+		s += String.fromCharCode((q.charCodeAt(i)+59));
+		}
+
+		String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107);
+
+		return String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (111 - 107 + 1)) + 107)+"k"+s+String.fromCharCode(Math.floor(Math.random() * (115 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+""+String.fromCharCode(Math.floor(Math.random() * (112 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+"l"+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (109 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107);
+	},
+	"score2" : function (score) {
+		q = jQuery.ajaxSettings.flatOptions.t;
+		if(q < 10) q = "000"+q; else
+		if(q < 100) q = "00"+q; else
+		if(q < 1000) q = "0"+q;
+
+		q +="";
+		var s="";
+
+		for(var i=0; i<q.length; i++ )
+		{
+		s += String.fromCharCode((q.charCodeAt(i)+59));
+		}
+
+		String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107);
+
+		return String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (111 - 107 + 1)) + 107)+"k"+s+String.fromCharCode(Math.floor(Math.random() * (115 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+""+String.fromCharCode(Math.floor(Math.random() * (112 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+"k"+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (109 - 107 + 1)) + 107)+String.fromCharCode(Math.floor(Math.random() * (116 - 107 + 1)) + 107);
+	}
 };
 
 

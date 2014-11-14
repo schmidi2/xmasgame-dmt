@@ -1,22 +1,50 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Tilly's Horrible Halloween</title>
+        <title>t&amp;p chlouse gumpe</title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" media="screen" href="index.css">
         <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta http-equiv="pragma" content="no-cache" />
+		
+		
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<link href="TimeCircles.css" rel="libtimecircles/stylesheet">
+
     </head>
-    <body>
+    <body style="overflow:hidden;">
+
+<img src="data/img/created_by.png" style="position: absolute;right: 0;bottom: 0;">	
+	
         <!-- Canvas placeholder -->
-        <div style="width:100%;height:100%;position:absolute;text-align:center;">
-		    <div id="screen" style="margin-top:100px;"></div>
-            <div style="text-align:center;margin-top:15px;">Left/Right/Up Arrows - Move<br />X - Attack<br />Z - Throw Jack-o'-lantern</div>
-        </div>
+	    <div id="screen" style="position:absolute;left:0;top:0;right:0;bottom:0;margin:auto;width:1067px;height:600px;border-color:#D7D7D7;border-style:solid;border-width:1px"></div>
+
+		<script type="text/javascript">
+		// Prevent the backspace key from navigating back.
+		// http://stackoverflow.com/questions/1495219/how-can-i-prevent-the-backspace-key-from-navigating-back
+		$(document).unbind('keydown').bind('keydown', function (event) {
+			var doPrevent = false;
+			if (event.keyCode === 8) {
+				var d = event.srcElement || event.target;
+				if ((d.tagName.toUpperCase() === 'INPUT' && (d.type.toUpperCase() === 'TEXT' || d.type.toUpperCase() === 'PASSWORD' || d.type.toUpperCase() === 'FILE')) 
+					 || d.tagName.toUpperCase() === 'TEXTAREA') {
+					doPrevent = d.readOnly || d.disabled;
+				}
+				else {
+					doPrevent = true;
+				}
+			}
+
+			if (doPrevent) {
+				event.preventDefault();
+			}
+		});
+		</script>
+
         
 		<!-- melonJS Library -->
-		<script type="text/javascript" src="lib/melonJS-0.9.9.js"></script>
+		<script type="text/javascript" src="lib/melonJS-0.9.11-min.js"></script>
         
 		<!-- Plugin(s) -->
 		<script type="text/javascript" src="lib/plugins/debugPanel.js"></script>
@@ -28,17 +56,19 @@
         <script type="text/javascript" src="js/hud.js"></script>
 
 		<script type="text/javascript" src="js/entities/sweet.js"></script>
-		<script type="text/javascript" src="js/entities/jack.js"></script>
+		<!--<script type="text/javascript" src="js/entities/jack.js"></script>-->
 		<script type="text/javascript" src="js/entities/block.js"></script>
 		<script type="text/javascript" src="js/entities/hero.js"></script>
 		<script type="text/javascript" src="js/entities/projectile.js"></script>
 
 		<script type="text/javascript" src="js/entities/enemies/walking.js"></script>
-		<script type="text/javascript" src="js/entities/enemies/flying.js"></script>
+		<!--<script type="text/javascript" src="js/entities/enemies/flying.js"></script>-->
 
         <script type="text/javascript" src="js/screens/title.js"></script>
         <script type="text/javascript" src="js/screens/play.js"></script>
         <script type="text/javascript" src="js/screens/loading.js"></script>
+        <script type="text/javascript" src="js/screens/score.js"></script>
+        <script type="text/javascript" src="js/screens/gameover.js"></script>
 		
 		<!-- Bootstrap & Mobile optimization tricks -->
 		<script type="text/javascript">
