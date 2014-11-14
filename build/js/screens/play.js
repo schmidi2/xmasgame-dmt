@@ -1,0 +1,1 @@
+game.PlayScreen=me.ScreenObject.extend({onResetEvent:function(){me.levelDirector.loadLevel("map1"),me.game.add(new game.HUD.Container)},onDestroyEvent:function(){me.state.change(me.state.GAMEOVER)}});
