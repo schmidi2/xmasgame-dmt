@@ -1,8 +1,8 @@
 Xmas Browser Game
 ============
 
-This Xmas Game I made in 2013 for our music club Dorfmusik Thörishaus. It is a HTML5 browser game, based on the JavaScript framework melonJS.
-As a template I used Tilly's Horrible Halloween by Gareth Williams, see GarethIW/MelonTest https://github.com/GarethIW/MelonTest.
+This Xmas Game I made in 2013 for our music club [Dorfmusik Thörishaus](http://www.dm-thoerishaus.ch). It is a HTML5 browser game, based on the JavaScript framework [melonJS](http://melonjs.org).
+As a template I used Tilly's Horrible Halloween by Gareth Williams, see [GarethIW/MelonTest](https://github.com/GarethIW/MelonTest).
 
 * The game is in german only. Translate yourself if you like to.
 * It was developed quicky and a little bit dirty, because I didn't have much time.
@@ -17,7 +17,7 @@ Control the Santa Claus throug the map. Collect as many notes as possible. But a
 
 Installation
 -
-This game was used on GNU/Debian with Apache 2.2, PHP 5.3 and MySQL 5.5. It will likely work on never versions.
+This game was used on GNU/Debian with Apache 2.2, PHP 5.3 and MySQL 5.5. It will likely work on never versions and similar environments.
 Copy the directory src/ into your website and rename the folder. Import the SQL script you find in the subdirectory db/. Enter the database connection parameters in the file scores.php. If you like to monitor the highscore, enter parameters in the file 00rangliste.php too.
 
 
