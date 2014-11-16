@@ -10,9 +10,19 @@ As a template I used Tilly's Horrible Halloween by Gareth Williams, see [GarethI
 * Sadly it runs too slow on mobile phones or tablets. Maybe with a newer version of melonJS or newer devices it will work smoothly.
 * No sound used. You have to implement that by yourself.
 
+
 Gameplay
 -
 Control the Santa Claus throug the map. Collect as many notes as possible. But avoid the eval monsters. If they touch your Santa Claus, he dies. He can die as many times you like. But after 60 seconds, the game is over and you see the highscore list - maybe you get on the list. If not, you can try again. Don't forget to enter your name in highscore.
+
+
+Screenshots
+-
+![Start Page](/doc/img/Screenshot01.png?raw=true "Start Page")
+![Playing](/doc/img/Screenshot02.png?raw=true "Playing")
+![Playing - 41 seconds left](/doc/img/Screenshot03.png?raw=true "Playing - 41 seconds left")
+![Game Over - Enter your Name](/doc/img/Screenshot04.png?raw=true "Game Over - Enter your Name")
+![Highscore](/doc/img/Screenshot05.png?raw=true "Highscore")
 
 
 Installation
